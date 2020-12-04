@@ -35,7 +35,14 @@ export default function CardTodo({ todo }) {
             <Button variant="success" className="mr-2">
               Done
             </Button>
-            <Button className="mr-2">Edit</Button>
+            <Button
+              className="mr-2"
+              as={Link}
+              to={`/edit-todo/${todo.id}`}
+              onClick={handleEdit}
+            >
+              Edit
+            </Button>
             <Button onClick={handleShow} variant="danger">
               Delete
             </Button>

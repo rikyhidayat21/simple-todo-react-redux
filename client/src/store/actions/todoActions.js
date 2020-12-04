@@ -107,3 +107,34 @@ export const deleteTodo = (id) => async (dispatch) => {
     });
   }
 };
+
+export const getByIdTodo = (id) => async (dispatch) => {
+  console.log("enter get by id at action");
+  try {
+    dispatch({
+      type: TODO_GETBYID_REQUEST,
+    });
+
+    const { data } = await axios.get(`/todos/${id}`, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    dispatch({
+      type: TODO_GETBYID_SUCCESS,
+      payload: data,
+    });
+
+    console.log(data, "<=== get by id contact at action");
+  } catch (error) {
+    console.log(error, "<=== error get by id contact");
+    dispatch({
+      type: TODO_GETBYID_FAIL,
+      payload:
+        error.response && error.response.data.errors
+          ? error.response.data.errors
+          : ["error unknown"],
+    });
+  }
+};

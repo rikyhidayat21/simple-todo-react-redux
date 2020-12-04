@@ -4,12 +4,14 @@ import {
   todoCreateReducer,
   todoListReducer,
   todoDeleteReducer,
+  todoGetByIdReducer,
 } from "./reducers/todoReducers";
 
 const reducer = combineReducers({
   todoCreateReducer,
   todoListReducer,
   todoDeleteReducer,
+  todoGetByIdReducer,
 });
 
 const store = createStore(reducer, applyMiddleware(thunk));

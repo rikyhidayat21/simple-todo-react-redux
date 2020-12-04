@@ -68,3 +68,19 @@ export const todoDeleteReducer = (
       return state;
   }
 };
+
+export const todoGetByIdReducer = (
+  state = { loading: false, todo: {}, errors: [] },
+  action
+) => {
+  switch (action.type) {
+    case TODO_GETBYID_REQUEST:
+      return { loading: true };
+    case TODO_GETBYID_SUCCESS:
+      return { loading: false, todo: action.payload };
+    case TODO_GETBYID_FAIL:
+      return { loading: false, todo: {}, errors: action.payload };
+    default:
+      return state;
+  }
+};
